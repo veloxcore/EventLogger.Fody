@@ -13,10 +13,10 @@ public partial class ModuleWeaver
         if (fieldDefinition == null)
         {
             fieldDefinition = new FieldDefinition("FieldEventLogger", FieldAttributes.Static | FieldAttributes.Private, LoggerType)
-                {
-                    DeclaringType = type,
-                    IsStatic = true,
-                };
+            {
+                DeclaringType = type,
+                IsStatic = true,
+            };
             foundAction = () => InjectField(type, fieldDefinition);
         }
         else
@@ -34,25 +34,22 @@ public partial class ModuleWeaver
             }
 
             var onExceptionProcessor = new OnExceptionProcessor
-                {
-                    Method = method,
-                    LoggerField = fieldReference,
-                    FoundUsageInType = () => foundUsage = true,
-                    ModuleWeaver = this
-                };
-            onExceptionProcessor.Process();
-            
-            if (method.IsPublic)
             {
-                var logEventProcessor = new AddLogEventProcessor
-                {
-                    Method = method,
-                    LoggerField = fieldReference,
-                    FoundUsageInType = () => foundUsage = true,
-                    ModuleWeaver = this
-                };
-                logEventProcessor.Process();
-            }
+                Method = method,
+                LoggerField = fieldReference,
+                FoundUsageInType = () => foundUsage = true,
+                ModuleWeaver = this
+            };
+            onExceptionProcessor.Process();
+
+            var logEventProcessor = new AddLogEventProcessor
+            {
+                Method = method,
+                LoggerField = fieldReference,
+                FoundUsageInType = () => foundUsage = true,
+                ModuleWeaver = this
+            };
+            logEventProcessor.Process();
         }
         if (foundUsage)
         {

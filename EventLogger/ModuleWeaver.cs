@@ -21,12 +21,13 @@ public partial class ModuleWeaver
     {
         FindGetLoggerMethod();
         LoadSystemTypes();
-		Init();
+        Init();
         foreach (var type in ModuleDefinition
             .GetTypes()
             .Where(x => (x.BaseType != null) && !x.IsEnum && !x.IsInterface))
         {
-            ProcessType(type);
+            if (type.FullName != LoggerType.FullName)
+                ProcessType(type);
         }
 
         //TODO: ensure attributes don't exist on interfaces
