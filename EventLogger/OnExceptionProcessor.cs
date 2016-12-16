@@ -123,7 +123,7 @@ class OnExceptionProcessor
         yield return Instruction.Create(OpCodes.Brfalse_S, sectionNop);
         yield return Instruction.Create(OpCodes.Ldsfld, LoggerField);
         yield return Instruction.Create(OpCodes.Ldloc, messageVariable);
-        yield return Instruction.Create(OpCodes.Ldstr, Method.FullName);
+        yield return Instruction.Create(OpCodes.Ldstr, Method.DeclaringType.ToString() + "." + Method.Name);
         yield return Instruction.Create(OpCodes.Ldloc, exceptionVariable);
         yield return Instruction.Create(OpCodes.Callvirt, writeMethod);
         yield return sectionNop;

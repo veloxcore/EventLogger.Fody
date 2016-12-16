@@ -4,8 +4,8 @@
     <id>EventLogger.Fody</id>
     <version>$version$</version>
     <title>EventLogger.Fody</title>
-    <authors>Simon Cropp</authors>
-    <owners>Simon Cropp</owners>
+    <authors>Veloxcore Team</authors>
+    <owners>Veloxcore Team</owners>
     <developmentDependency>true</developmentDependency>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

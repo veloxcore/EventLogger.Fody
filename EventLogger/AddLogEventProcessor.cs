@@ -83,7 +83,7 @@ class AddLogEventProcessor
         result.Add(Instruction.Create(OpCodes.Nop));
         result.Add(Instruction.Create(OpCodes.Ldsfld, LoggerField));
         result.Add(Instruction.Create(OpCodes.Ldstr, message));
-        result.Add(Instruction.Create(OpCodes.Ldstr, Method.FullName));
+        result.Add(Instruction.Create(OpCodes.Ldstr, Method.DeclaringType.ToString() + "." + Method.Name));
         result.Add(Instruction.Create(OpCodes.Ldnull));
         result.Add(Instruction.Create(OpCodes.Callvirt, ModuleWeaver.InfoMethod));
         result.Add(Instruction.Create(OpCodes.Nop));
