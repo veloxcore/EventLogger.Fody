@@ -93,11 +93,17 @@
     <Compile Include="AddLogEventProcessor.cs" />
     <Compile Include="AsyncChecker.cs" />
     <Compile Include="CecilExtensions.cs" />
+    <Compile Include="CustomTests.cs" />
     <Compile Include="Lazy.cs" />
     <Compile Include="OnExceptionProcessor.cs" />
     <Compile Include="ParamsFormatBuilder.cs" />
     <Compile Include="ReturnFixer.cs" />
     <Compile Include="SystemTypesResolver.cs" />
+    <Compile Include="TestHelpers\AppDomainAssemblyFinder.cs" />
+    <Compile Include="TestHelpers\AssemblyExtensions.cs" />
+    <Compile Include="TestHelpers\MockAssemblyResolver.cs" />
+    <Compile Include="TestHelpers\Verifier.cs" />
+    <Compile Include="TestHelpers\WeaverHelper.cs" />
     <Compile Include="TypeProcessor.cs" />
     <Compile Include="ModuleWeaver.cs" />
     <Compile Include="TypeResolver.cs" />

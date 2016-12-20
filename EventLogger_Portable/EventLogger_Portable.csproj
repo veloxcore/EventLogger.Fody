@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="CommonAssemblyInfo.cs" />
     <Compile Include="EventNameAttribute.cs" />
+    <Compile Include="ExcludeFromLoggingAttribute.cs" />
     <Compile Include="LoggerFactoryAttribute.cs" />
     <Compile Include="LogToErrorOnExceptionAttribute.cs" />
     <Compile Include="StringFormatMethodAttribute.cs" />

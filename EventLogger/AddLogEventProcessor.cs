@@ -49,9 +49,6 @@ class AddLogEventProcessor
                 startingInstructions.AddRange(SetEventNameInstruction(eventName));
                 endingInstructions.AddRange(SetEventNameInstruction(""));
             }
-
-            //endingInstructions.Add(Instruction.Create(OpCodes.Nop));
-            //endingInstructions.Add(Instruction.Create(OpCodes.Endfinally));
             startingInstructions.AddRange(GetEventInstruction("Method calling started."));
 
             var tryLeaveInstructions = Instruction.Create(OpCodes.Leave_S, returnFixer.NopBeforeReturn);

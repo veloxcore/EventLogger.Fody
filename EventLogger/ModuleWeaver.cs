@@ -24,9 +24,20 @@ public partial class ModuleWeaver
         Init();
         foreach (var type in ModuleDefinition
             .GetTypes()
-            .Where(x => (x.BaseType != null) && !x.IsEnum && !x.IsInterface))
+            .Where(x => (x.BaseType != null) && !x.IsEnum && !x.IsInterface && !x.IsSealed))
         {
-            if (type.FullName != LoggerType.FullName)
+            bool excludeForLogging = false;
+            foreach (CustomAttribute attribute in type.CustomAttributes)
+            {
+                if (attribute.AttributeType.FullName.Equals("EventLogger.ExcludeFromLoggingAttribute"))
+                {
+                    excludeForLogging = true;
+                    type.CustomAttributes.Remove(attribute);
+                    break;
+                }
+            }
+
+            if (!excludeForLogging && type.FullName != LoggerType.FullName)
                 ProcessType(type);
         }
 
